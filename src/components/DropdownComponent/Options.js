@@ -4,8 +4,11 @@ import './Options.styles.css';
 
 const Options = React.forwardRef((props, toggleRef) => {
     const selectOption = (item) => {
-        props.setToggle(!(props.toggle));
-        props.setChoice(item);
+        if (props.choices !== item) {
+            props.setToggle(!(props.toggle));
+            props.setChoice(item);
+        }
+
     }
 
     useEffect(() => {
