@@ -36,11 +36,11 @@ const Dropdown = React.forwardRef((props, toggleRef) => {
         inputRef.current.value = props.choices.value;
     }, [props.choices])
 
-    
+
     return (
         <React.Fragment>
             <div className="DropdownComponent" onClick={toggleDropdown}>
-                <input className="dropdown-area" ref={inputRef} />
+                <input className="dropdown-area" ref={inputRef} readOnly />
                 <div className="toggleIcon" ref={toggleRef}></div>
             </div>
             <div className="optionBox">
