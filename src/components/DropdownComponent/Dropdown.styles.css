@@ -1,0 +1,45 @@
+.DropdownComponent {
+    display    : flex;
+    align-items: center;
+}
+
+.dropdown-area {
+    width           : calc(100% - 50px);
+    border          : 1px solid #cfd7df;
+    margin          : 5px 0px 5px;
+    border-radius   : 4px;
+    padding         : 4px 0px 4px 10px;
+    box-shadow      : none;
+    min-height      : 24px;
+    display         : inline-block;
+    background-color: #fff;
+}
+
+.dropdown-area:focus {
+    outline   : none;
+    background: #fff;
+    border    : 1px solid transparent;
+    box-shadow: 0 0 0 2px #2c5cc5;
+    cursor    : pointer;
+
+}
+
+.toggleIcon {
+    position           : relative;
+    display            : inline-block;
+    right              : 15px;
+    content            : "";
+    width              : 5px;
+    height             : 5px;
+    background-color   : transparent;
+    border-bottom-style: inherit;
+    border-top         : 1px solid rgb(18, 52, 77);
+    border-right       : 1px solid rgb(18, 52, 77);
+    border-left        : transparent;
+    transform          : rotate(135deg);
+    transition         : all 0.45s ease 0s;
+}
+
+.DropdownComponent .invert {
+    transform: rotate(315deg);
+}

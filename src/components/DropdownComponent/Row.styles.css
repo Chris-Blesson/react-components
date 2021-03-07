@@ -1,0 +1,7 @@
+.leftSection, .rightSection{
+    width: 50%;
+}
+
+.removeFieldOption{
+    font-size: 24px;
+}
