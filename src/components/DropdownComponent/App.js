@@ -34,6 +34,7 @@ const App = (props) => {
       ref={toggleRef}
       currentDropdown={props.currentDropdown}
       setCurrentDropdown={props.setCurrentDropdown}
+      setRow={props.setRow}
     />
   )
 }

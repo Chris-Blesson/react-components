@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './OuterBox.styles.css';
 import Row from './Row';
+import { StoreContext } from '../../utils/store';
 
 const OuterBox = ({ leftHeading, rightHeading }) => {
     const [currentDropdown, setCurrentDropdown] = useState(null);
@@ -10,9 +11,9 @@ const OuterBox = ({ leftHeading, rightHeading }) => {
         setCurrentDropdown(null);
     }
 
- 
+    const optionStore = useContext(StoreContext);
     const columns = Array(options).fill().map((item, index) => {
-        return <Row setCurrentDropdown={setCurrentDropdown} currentDropdown={currentDropdown} key={index} index={index} />
+        return <Row setCurrentDropdown={setCurrentDropdown} currentDropdown={currentDropdown} leftChoices={optionStore.leftChoices} rightChoices={optionStore.rightChoices} key={index} index={index} />
     })
     return (
         <div className="counter">

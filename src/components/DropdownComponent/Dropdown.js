@@ -14,8 +14,8 @@ const Dropdown = React.forwardRef((props, toggleRef) => {
         else {
             reference.current.className = 'toggleIcon invert';
         }
-
     }
+
     const toggleDropdown = () => {
         if (props.currentDropdown) {
             if (props.currentDropdown.toggleProp) {
@@ -29,7 +29,6 @@ const Dropdown = React.forwardRef((props, toggleRef) => {
         }
         handleToggle(toggleRef);
         props.setToggle(!props.toggle);
-
     }
 
     useEffect(() => {
@@ -49,11 +48,12 @@ const Dropdown = React.forwardRef((props, toggleRef) => {
                     choices={props.choices}
                     setChoice={props.setChoice}
                     options={props.options.stateValue}
+                    setOptions={props.options.setStateValue}
                     setToggle={props.setToggle}
                     ref={toggleRef}
+                    setRow={props.setRow}
                 />
             </div>
-
         </React.Fragment>
     )
 })

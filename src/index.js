@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { MappingLayout } from './components/DropdownComponent/MappingLayout.js';
 import './index.css';
-const leftOptions = [
+let leftOptions = [
   {
     key: '',
     text: '--select--',
@@ -44,7 +44,7 @@ const leftOptions = [
   },
 ];
 
-const rightOptions = [
+let rightOptions = [
   {
     key: '',
     text: '--select--',
@@ -75,6 +75,13 @@ const rightOptions = [
   { key: 'bj', value: 'bj', text: 'Benin' },
 ]
 
+
+const appendDisabled = (options) => {
+  return options.map((item) => { return { ...item, disabled: false } })
+}
+
+leftOptions = appendDisabled(leftOptions);
+rightOptions = appendDisabled(rightOptions);
 
 ReactDOM.render(
   <MappingLayout leftOptions={leftOptions} rightOptions={rightOptions} />,

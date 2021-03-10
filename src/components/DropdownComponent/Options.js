@@ -3,10 +3,19 @@ import './Options.styles.css';
 
 
 const Options = React.forwardRef((props, toggleRef) => {
+    
     const selectOption = (item) => {
-        if (props.choices !== item) {
+        if (props.choices !== item && !(item.disabled)) {
             props.setToggle(!(props.toggle));
             props.setChoice(item);
+            props.setRow(item);
+            let updatedOptions = props.options.map((choiceItem) => {
+                if ((choiceItem.value === item.value) && (item.value !== '--select--')) {
+                    choiceItem['disabled'] = true;
+                }
+                return choiceItem
+            })
+            props.setOptions(updatedOptions);
         }
 
     }
@@ -18,10 +27,12 @@ const Options = React.forwardRef((props, toggleRef) => {
         else {
             toggleRef.current.className = 'toggleIcon invert';
         }
-    }, [props.toggle])
+    }, [props.toggle]);
+
+
     let renderedOptions = props.options.map(item => {
         let flag = false;
-        if (item.value === props.choices.value) {
+        if (((item.value === props.choices.value) || item.disabled) && item.value !== '--select--') {
             flag = true;
         }
         return (
@@ -30,11 +41,13 @@ const Options = React.forwardRef((props, toggleRef) => {
                 key={`${item.value}${item.index}`}
                 onClick={() => selectOption(item)}
             >
-                <div className="textContent">{item.value}</div>
+                <div className={`textContent ${flag ? 'selected' : ''}`}>{item.value}</div>
                 <div className="check"></div>
             </li>
         )
     })
+
+
     return (
         <div className="optionContainer">
             <ul className={`option-dropdown ${props.toggle ? 'show' : 'hide'}`}>
@@ -43,6 +56,7 @@ const Options = React.forwardRef((props, toggleRef) => {
 
         </div>
     )
+
 })
 
 module.exports = Options;
