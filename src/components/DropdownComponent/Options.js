@@ -3,22 +3,30 @@ import './Options.styles.css';
 
 
 const Options = React.forwardRef((props, toggleRef) => {
+
+    const updateStateOptions = (item,toggle) => {
+
+        console.info(item, 'Item');
+        let updatedOptions = props.options.map((choiceItem) => {
+            if ((choiceItem.value === item.value) && (item.value !== '--select--')) {
+                choiceItem['disabled'] = toggle;
+            }
+            return choiceItem
+        })
+        props.setOptions(updatedOptions);
+    }
     
     const selectOption = (item) => {
         if (props.choices !== item && !(item.disabled)) {
+            updateStateOptions(props.choices, false);
             props.setToggle(!(props.toggle));
             props.setChoice(item);
             props.setRow(item);
-            let updatedOptions = props.options.map((choiceItem) => {
-                if ((choiceItem.value === item.value) && (item.value !== '--select--')) {
-                    choiceItem['disabled'] = true;
-                }
-                return choiceItem
-            })
-            props.setOptions(updatedOptions);
+            updateStateOptions(item, true);
         }
-
     }
+
+
 
     useEffect(() => {
         if (!props.toggle) {
